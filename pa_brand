@@ -1,0 +1,18 @@
+  
+//FUnction to save auto brand name
+function save_caracteristica( $post_id ){ 
+	 	$pa_brand = Array('pa_brand'=>Array(
+		'name'=>'pa_brand',
+		'value'=>' ',
+		'is_visible' => '1',
+		'is_taxonomy' => '1'
+		));
+		update_post_meta( $post_id,'_product_attributes',$pa_brand); 
+	 	$userid =  get_user_meta( get_current_user_id(), 'pv_shop_name', true );	
+
+		wp_set_object_terms($post_id, $userid, 'pa_brand' , true);
+}
+add_action( 'wcv_save_product', 'save_caracteristica' ); 
+
+
+ 
